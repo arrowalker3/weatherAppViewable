@@ -1,0 +1,52 @@
+.list-group-item {
+    background-color: #F1F0E7;
+    &:hover {
+        background-color: #e8e7d9;
+    }
+}
+
+.card-header {
+    color: black;
+    background-color: #14CE14;
+}
+
+.flex-wrap > * {
+    min-width: 10em;
+    margin: 0.5em 2em;
+    margin-top: auto;
+}
+
+small {
+    font-size: x-small;
+}
+
+.info {
+    display: none;
+}
+
+.info.active {
+    display: block;
+}
+
+.dropdown-menu {
+    display: none;
+}
+
+.dropdown-menu.active {
+    display: block;
+    position: absolute;
+    right: 5px;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 10em;
+}
+
+.dropdown-item {
+    background-color: #cccccc;
+    color: #5e6472;
+}
+
+.dropdown-item.active {
+    background-color: white;
+    color: black;
+}

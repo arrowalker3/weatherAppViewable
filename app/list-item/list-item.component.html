@@ -1,0 +1,48 @@
+<a [routerLink]="['/location', location.id]" class="list-group-item list-group-item-action" aria-current="true">
+    <div class="align-items-center card-header">
+        <h5 class="mb-1 text-center">{{ location.location.name }}, {{ location.location.region }}</h5>
+    </div>
+    <div class="d-flex justify-content-around flex-wrap">
+        <div class="active info {{location.id}} condition">
+            <img src="{{ location.current.condition.icon }}" alt=""><span class="align-bottom">{{ location.current.condition.text }}</span>
+        </div>
+        <p class="active align-middle info {{location.id}} temp">{{ location.current.temp_f }} &#176;F <small>({{ location.current.temp_c }} &#176;C)</small></p>
+        <p class="align-middle info {{location.id}} feel">Feels like: {{ location.current.feelslike_f }} &#176;F <small>({{ location.current.feelslike_c }} &#176;C)</small></p>
+        <p class="active align-middle info {{location.id}} humid">Humidity: {{ location.current.humidity }}%</p>
+        <p class="active align-middle info {{location.id}} cloud">Cloud Cover: {{ location.current.cloud }}%</p>
+        <p class="active align-middle info {{location.id}} windSpeed">Wind: {{ location.current.wind_mph }} mph <small>({{location.current.wind_kph}} kph)</small></p>
+        <p class="active align-middle info {{location.id}} direction">Wind Direction: {{ location.current.wind_dir }}</p>
+        <p class="align-middle info {{location.id}} gust">Gust: {{ location.current.gust_mph }} mph <small>({{location.current.gust_kph}} kph)</small></p>
+        <p class="align-middle info {{location.id}} pressure">Pressure: {{ location.current.pressure_in }} in <small>({{location.current.pressure_mb}} mb)</small></p>
+        <p class="align-middle info {{location.id}} precip">Precipitation: {{ location.current.precip_in }} in <small>({{location.current.precip_mm}} mm)</small></p>
+        <p class="align-middle info {{location.id}} vis">Visibility: {{ location.current.vis_miles }} mi <small>({{location.current.vis_km}} km)</small></p>
+        <p class="align-middle info {{location.id}} update">Last updated {{ location.current.last_updated | date:'short' }} local time</p>
+    </div>
+</a>
+<div class="float-end menu-options">
+    <button class="btn btn-outline-secondary" [class.collapse]="!showAllButtonVisible" (click)="showAll()">Show All Data</button>
+    <button class="btn btn-outline-secondary" [class.collapse]="showAllButtonVisible" (click)="hideAll()">Hide All Data</button>
+    <button
+        class="btn btn-outline-secondary dropdown-toggle"
+        id="dropdown"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        (click)="onToggle()"
+        aria-expanded="false">
+        <span class="align-middle">Options</span>
+    </button>
+    <div class="dropdown-menu" [class.active]="showMenu" id="dropdown_{{location.id}}" aria-labelledby="dropdown">
+        <a (click)="onSelect('condition')" class="active dropdown-item {{location.id}} condition">Conditions</a>
+        <a (click)="onSelect('temp')" class="active dropdown-item {{location.id}} temp">Temperature</a>
+        <a (click)="onSelect('feel')" class="dropdown-item {{location.id}} feel">Temperature: Feels Like</a>
+        <a (click)="onSelect('humid')" class="active dropdown-item {{location.id}} humid">Humidity</a>
+        <a (click)="onSelect('cloud')" class="active dropdown-item {{location.id}} cloud">Cloud Cover</a>
+        <a (click)="onSelect('windSpeed')" class="active dropdown-item {{location.id}} windSpeed">Wind Speed</a>
+        <a (click)="onSelect('direction')" class="active dropdown-item {{location.id}} direction">Wind Direction</a>
+        <a (click)="onSelect('gust')" class="dropdown-item {{location.id}} gust">Gust Speeds</a>
+        <a (click)="onSelect('pressure')" class="dropdown-item {{location.id}} pressure">Pressure</a>
+        <a (click)="onSelect('precip')" class="dropdown-item {{location.id}} precip">Precipitation</a>
+        <a (click)="onSelect('vis')" class="dropdown-item {{location.id}} vis">Visibility</a>
+        <a (click)="onSelect('update')" class="dropdown-item {{location.id}} update">Last Updated</a>
+    </div>
+</div>

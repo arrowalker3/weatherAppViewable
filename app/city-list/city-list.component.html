@@ -1,0 +1,9 @@
+
+<ul class="list-group">
+    <button type="button" (click)="onFlipOrder()">Reverse Order</button>
+    <li *ngFor="let location of (responses$ | async); let i = index" class="list-group-item">
+        <app-list-item [location]="location" [id]="location.id"></app-list-item>
+
+        <button (click)="onDelete(i)">Remove</button>
+    </li>
+</ul>

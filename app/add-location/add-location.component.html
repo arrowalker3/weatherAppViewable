@@ -1,0 +1,9 @@
+<form class="d-flex flex-wrap screen-bar">
+    <span class="alert alert-danger" *ngIf="(errorMessage$ | async)">
+        {{ (errorMessage$ | async) }}
+    </span>
+    <div class="form-group">
+        <input ngModel autofocus type="text" [(ngModel)]="searchString" name="searchString" class="form-control" placeholder="Enter a city name or zip code">
+    </div>
+    <button class="btn btn-primary" (click)="onSearch()">Search</button>
+</form>

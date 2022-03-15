@@ -1,0 +1,39 @@
+<app-return-home></app-return-home>
+<div class="card main">
+    <h1 class="card-title">{{ (weatherData$ | async).location.name }}</h1>
+    
+    <div class="row">
+        <div class="card col-sm-5 align-middle flex-fill">
+            <img src="{{  (weatherData$ | async).current.condition.icon }}" alt="">
+            <span class="">{{  (weatherData$ | async).current.condition.text }}</span>
+            <p class="align-middle">Precipitation: {{  (weatherData$ | async).current.precip_in }} in <small>({{ (weatherData$ | async).current.precip_mm}} mm)</small></p>
+            <p class="align-middle">Cloud Cover: {{  (weatherData$ | async).current.cloud }}%</p>
+        </div>
+        <div class="col-sm-5 card flex-fill">
+            <h2>Temperature</h2>
+            <p class="align-middle">{{  (weatherData$ | async).current.temp_f }} &#176;F / {{  (weatherData$ | async).current.temp_c }} &#176;C</p>
+            <h5>Feels like</h5>
+            <p class="align-middle">{{  (weatherData$ | async).current.feelslike_f }} &#176;F / {{  (weatherData$ | async).current.feelslike_c }} &#176;C</p>
+        </div>
+    </div>
+    <div class="row flex-fill">
+        <div class="card flex-fill">
+            <h2>Wind</h2>
+            <div class="compass-container col-sm-4">
+                <!-- This shows wind direction with an arrow overlaid on top of a compass rose -->
+                <img class="compass" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Compass_rose_en_04p.svg/2048px-Compass_rose_en_04p.svg.png" alt="Compass">
+                <svg style.transform="rotate(-{{ directionRotation }}deg)" xmlns="http://www.w3.org/2000/svg" width="100" height="60" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                </svg>
+            </div>
+            <p class="align-middle">{{  (weatherData$ | async).current.wind_mph }} mph <small>({{ (weatherData$ | async).current.wind_kph}} kph)</small></p>
+            <p class="align-middle">Gust: {{  (weatherData$ | async).current.gust_mph }} mph <small>({{ (weatherData$ | async).current.gust_kph}} kph)</small></p>
+        </div>
+        <div class="card col-sm-4 flex-fill">
+            <p class="align-middle">Humidity: {{  (weatherData$ | async).current.humidity }}%</p>
+            <p class="align-middle">Pressure: {{  (weatherData$ | async).current.pressure_in }} in <small>({{ (weatherData$ | async).current.pressure_mb}} mb)</small></p>
+            <p class="align-middle">Visibility: {{  (weatherData$ | async).current.vis_miles }} mi <small>({{ (weatherData$ | async).current.vis_km}} km)</small></p>
+        </div>
+    </div>
+</div>
+<small class="float-end">Last updated {{  (weatherData$ | async).current.last_updated | date:'short' }} local time</small>

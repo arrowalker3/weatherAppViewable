@@ -1,0 +1,55 @@
+.main {
+    background-color: #F1F0E7;
+}
+
+.card {
+    margin: 5px;
+}
+.row {
+    max-width: 100%;
+    margin: 0;
+    align-items: center;
+    & > * {
+        align-items: center;
+    }
+}
+
+.card-title {
+    text-align: center;
+}
+
+img {
+    height:auto;
+    max-width: 100px;
+}
+
+.compass-container {
+    position: relative;
+
+    & > svg {
+        position: absolute;
+        left: 0px;
+        top: 20px;
+        color: #ce1414;
+    }
+}
+
+small {
+    font-size: x-small;
+}
+
+.float-end {
+    margin: 3px 10px;
+}
+
+@media screen and (min-width: 576px) {
+    .row {
+        max-width: 100%;
+        margin: 0;
+        align-items: center;
+        & > * {
+            align-items: center;
+            max-width: 50%;
+        }
+    }
+}
